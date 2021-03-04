@@ -8,13 +8,18 @@
   <!--Prop passing (Data passed as string)-->
   <!--If the props are binded like :propKey other types of data and stored variables can be used-->
   <!--@customEvent to listen to a children component event trigger-->
-  <Modal
-    v-if="showModal"
-    :header="header"
-    :text="text"
-    theme="sale"
-    @close="toggleModal"
-  />
+  <!--Slots are used to pass templates into Components-->
+  <Modal v-if="showModal" theme="sale" @close="toggleModal">
+    <!--A named slot is a template tag, position doesn't matter-->
+    <!--v-slot:name defines the name of the slot-->
+    <template v-slot:links>
+      <a href="#">Sign up now</a>
+      <a href="#">More info</a>
+    </template>
+    <!--An HTML structure nested like this is passed as a slot and can be used by the Component-->
+    <h1>{{ header }}</h1>
+    <p>{{ text }}</p>
+  </Modal>
   <!--Names for components can conflict with regular HTML elements-->
   <!--Events modifiers are used with @eventName.modifierForEvent-->
   <!--This example is Ctrl + Click-->

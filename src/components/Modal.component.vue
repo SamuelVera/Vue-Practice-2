@@ -4,8 +4,18 @@
   <!--Self prevents childs from triggering the event-->
   <div class="backdrop" @click.self="closeModal">
     <div class="modal" :class="{ sale: theme === 'sale' }">
-      <h1>{{ header }}</h1>
-      <p>{{ text }}</p>
+      <!--Usage of a default slots recieved by the parent component-->
+      <slot>
+        <!--Only showed if there's no default slot-->
+        Default content
+      </slot>
+      <div class="actions">
+        <!--Usage of named slots with name attribute, Ex: name="name-of-slot"-->
+        <slot name="links">
+          <!--Only showed if the named slot is not passed from the parent component-->
+          Default actions
+        </slot>
+      </div>
     </div>
   </div>
 </template>
@@ -15,7 +25,7 @@
 export default {
   // Props keys that could be accepted by this component
   // (Prop passing is optional even if there are prop names defined)
-  props: ["header", "text", "theme"],
+  props: ["theme"],
   methods: {
     /**Method to close modal */
     closeModal() {
@@ -50,11 +60,26 @@ export default {
   padding: 0;
   border: none;
 }
+.modal .actions {
+  text-align: center;
+  margin: 30px 0 10px 0;
+}
+.modal .actions a {
+  color: #333;
+  padding: 8px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  text-decoration: none;
+  margin: 10px;
+}
 .modal.sale {
   background: crimson;
   color: white;
 }
 .modal.sale h1 {
+  color: white;
+}
+.modal.sale .actions a {
   color: white;
 }
 </style>
