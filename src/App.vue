@@ -2,19 +2,18 @@
 
 <!--Template of the component (HTML Structure)-->
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <h1>{{ title }}</h1>
 </template>
 
 <!--Code for the component (OPTIONAL)-->
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
 /**Exporting this single file component */
 export default {
   name: "App",
-  components: {
-    HelloWorld,
+  data() {
+    return {
+      title: "My second Vue JS App",
+    };
   },
 };
 </script>
@@ -28,5 +27,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+h1 {
+  border-bottom: 1px solid #ddd;
+  display: inline-block;
+  padding-bottom: 10px;
 }
 </style>
