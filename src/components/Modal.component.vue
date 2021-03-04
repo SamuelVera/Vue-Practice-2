@@ -1,23 +1,27 @@
 <!--Template for the modal component-->
 <template>
-  <!--Events modifiers are used with @eventName.modifierForEvent-->
-  <!--Self prevents childs from triggering the event-->
-  <div class="backdrop" @click.self="closeModal">
-    <div class="modal" :class="{ sale: theme === 'sale' }">
-      <!--Usage of a default slots recieved by the parent component-->
-      <slot>
-        <!--Only showed if there's no default slot-->
-        Default content
-      </slot>
-      <div class="actions">
-        <!--Usage of named slots with name attribute, Ex: name="name-of-slot"-->
-        <slot name="links">
-          <!--Only showed if the named slot is not passed from the parent component-->
-          Default actions
+  <!--The teleport component allows to render an element to another place of the DOM-->
+  <!--Use the to attribute to select where to teleport based on a css selector-->
+  <teleport to="#modals">
+    <!--Events modifiers are used with @eventName.modifierForEvent-->
+    <!--Self prevents childs from triggering the event-->
+    <div class="backdrop" @click.self="closeModal">
+      <div class="modal" :class="{ sale: theme === 'sale' }">
+        <!--Usage of a default slots recieved by the parent component-->
+        <slot>
+          <!--Only showed if there's no default slot-->
+          Default content
         </slot>
+        <div class="actions">
+          <!--Usage of named slots with name attribute, Ex: name="name-of-slot"-->
+          <slot name="links">
+            <!--Only showed if the named slot is not passed from the parent component-->
+            Default actions
+          </slot>
+        </div>
       </div>
     </div>
-  </div>
+  </teleport>
 </template>
 
 <!--Script for the component-->

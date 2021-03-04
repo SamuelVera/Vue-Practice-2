@@ -30,7 +30,7 @@
   </Modal>
   <!--Names for components can conflict with regular HTML elements-->
   <!--Events modifiers are used with @eventName.modifierForEvent-->
-  <!--This example is Ctrl + Click-->
+  <!--This example is Ctrl + Click or Alt + click-->
   <button @click.ctrl="toggleModal" @click.alt="toggleSaleModal">
     Open modal (Ctrl + Click or Alt + Click?)
   </button>
@@ -51,6 +51,8 @@ export default {
   data() {
     return {
       title: "My second Vue JS App",
+      header: "Hello World of Vue JS 3",
+      text: "Nothing is out of reach, now ecifircas",
       showModal: false,
       showSaleModal: false,
     };
@@ -70,7 +72,8 @@ export default {
 
 <!--Styles of the component (OPTIONAL)-->
 <style>
-#app {
+#app,
+#modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
