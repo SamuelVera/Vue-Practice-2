@@ -4,7 +4,9 @@
 <template>
   <h1>{{ title }}</h1>
   <!--Self enclosed HTML for using child components in the template-->
-  <Modal />
+  <!--Prop passing (Data passed as string)-->
+  <!--If the props are binded like :propKey other types of data and stored variables can be used-->
+  <Modal :header="header" :text="text" theme="sale" />
   <!--Names for components can conflict with regular HTML elements-->
 </template>
 
@@ -23,6 +25,8 @@ export default {
   data() {
     return {
       title: "My second Vue JS App",
+      header: "Sign up for the Giveaway!",
+      text: "Grab your ninja swag for half price!",
     };
   },
 };
