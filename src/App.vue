@@ -6,7 +6,7 @@
   <HelloWorld msg="Welcome to Your Vue.js App" />
 </template>
 
-<!--Template script, code for the component-->
+<!--Code for the component (OPTIONAL)-->
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 
@@ -19,7 +19,7 @@ export default {
 };
 </script>
 
-<!--Styles of the component-->
+<!--Styles of the component (OPTIONAL)-->
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
