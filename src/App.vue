@@ -3,29 +3,27 @@
 <!--Template of the component (HTML Structure)-->
 <template>
   <h1>{{ title }}</h1>
-  <!--Use ref to get an element and handle it with JS methods-->
-  <input type="text" ref="inputTest" />
-  <button @click="handleClick">Click Me!</button>
+  <!--Self enclosed HTML for using child components in the template-->
+  <Modal />
+  <!--Names for components can conflict with regular HTML elements-->
 </template>
 
 <!--Code for the component (OPTIONAL)-->
 <script>
-/**Exporting this single file component */
+/**Importing a component */
+import Modal from "./components/Modal.component";
+/**Exporting for use in the template */
 export default {
   name: "App",
+  //For using components in the template
+  components: {
+    //Key: value -- [NameToUse]: ImportedComponent
+    Modal,
+  },
   data() {
     return {
       title: "My second Vue JS App",
     };
-  },
-  methods: {
-    handleClick() {
-      //Use $refs to access the refs of the scoped component
-      //Ex: Add a class name
-      this.$refs.inputTest.classList.add("active");
-      //Ex: Focus the input
-      this.$refs.inputTest.focus();
-    },
   },
 };
 </script>
