@@ -1,6 +1,8 @@
 <!--Template for the modal component-->
 <template>
-  <div class="backdrop" @click="closeModal">
+  <!--Events modifiers are used with @eventName.modifierForEvent-->
+  <!--Self prevents childs from triggering the event-->
+  <div class="backdrop" @click.self="closeModal">
     <div class="modal" :class="{ sale: theme === 'sale' }">
       <h1>{{ header }}</h1>
       <p>{{ text }}</p>

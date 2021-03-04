@@ -16,7 +16,9 @@
     @close="toggleModal"
   />
   <!--Names for components can conflict with regular HTML elements-->
-  <button @click="toggleModal">Open modal</button>
+  <!--Events modifiers are used with @eventName.modifierForEvent-->
+  <!--This example is Ctrl + Click-->
+  <button @click.ctrl="toggleModal">Open modal (Ctrl + Click)</button>
 </template>
 
 <!--Code for the component (OPTIONAL)-->
