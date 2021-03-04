@@ -1,6 +1,6 @@
 <!--Template for the modal component-->
 <template>
-  <div class="backdrop">
+  <div class="backdrop" @click="closeModal">
     <div class="modal" :class="{ sale: theme === 'sale' }">
       <h1>{{ header }}</h1>
       <p>{{ text }}</p>
@@ -14,6 +14,13 @@ export default {
   // Props keys that could be accepted by this component
   // (Prop passing is optional even if there are prop names defined)
   props: ["header", "text", "theme"],
+  methods: {
+    /**Method to close modal */
+    closeModal() {
+      //Emit a custom event that can be listened by the parent component
+      this.$emit("close");
+    },
+  },
 };
 </script>
 

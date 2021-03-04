@@ -3,11 +3,20 @@
 <!--Template of the component (HTML Structure)-->
 <template>
   <h1>{{ title }}</h1>
+  <p>Welcome...</p>
   <!--Self enclosed HTML for using child components in the template-->
   <!--Prop passing (Data passed as string)-->
   <!--If the props are binded like :propKey other types of data and stored variables can be used-->
-  <Modal :header="header" :text="text" theme="sale" />
+  <!--@customEvent to listen to a children component event trigger-->
+  <Modal
+    v-if="showModal"
+    :header="header"
+    :text="text"
+    theme="sale"
+    @close="toggleModal"
+  />
   <!--Names for components can conflict with regular HTML elements-->
+  <button @click="toggleModal">Open modal</button>
 </template>
 
 <!--Code for the component (OPTIONAL)-->
@@ -27,7 +36,14 @@ export default {
       title: "My second Vue JS App",
       header: "Sign up for the Giveaway!",
       text: "Grab your ninja swag for half price!",
+      showModal: false,
     };
+  },
+  methods: {
+    /**Opens and closes the modal */
+    toggleModal() {
+      this.showModal = !this.showModal;
+    },
   },
 };
 </script>
