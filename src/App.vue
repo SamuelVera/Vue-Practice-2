@@ -9,7 +9,7 @@
   <!--If the props are binded like :propKey other types of data and stored variables can be used-->
   <!--@customEvent to listen to a children component event trigger-->
   <!--Slots are used to pass templates into Components-->
-  <Modal v-if="showModal" theme="sale" @close="toggleModal">
+  <Modal v-if="showModal" theme="" @close="toggleModal">
     <!--A named slot is a template tag, position doesn't matter-->
     <!--v-slot:name defines the name of the slot-->
     <template v-slot:links>
@@ -20,10 +20,20 @@
     <h1>{{ header }}</h1>
     <p>{{ text }}</p>
   </Modal>
+  <!--The second modal-->
+  <Modal v-if="showSaleModal" theme="sale" @close="toggleSaleModal">
+    <!--Actions-->
+    <template v-slot:links>
+      <a href="#">Sign up to claim your prize!</a>
+    </template>
+    <h1>You won the prize</h1>
+  </Modal>
   <!--Names for components can conflict with regular HTML elements-->
   <!--Events modifiers are used with @eventName.modifierForEvent-->
   <!--This example is Ctrl + Click-->
-  <button @click.ctrl="toggleModal">Open modal (Ctrl + Click)</button>
+  <button @click.ctrl="toggleModal" @click.alt="toggleSaleModal">
+    Open modal (Ctrl + Click or Alt + Click?)
+  </button>
 </template>
 
 <!--Code for the component (OPTIONAL)-->
@@ -41,15 +51,18 @@ export default {
   data() {
     return {
       title: "My second Vue JS App",
-      header: "Sign up for the Giveaway!",
-      text: "Grab your ninja swag for half price!",
       showModal: false,
+      showSaleModal: false,
     };
   },
   methods: {
     /**Opens and closes the modal */
     toggleModal() {
       this.showModal = !this.showModal;
+    },
+    /**Opens the sale modal */
+    toggleSaleModal() {
+      this.showSaleModal = !this.showSaleModal;
     },
   },
 };
